@@ -1,0 +1,4 @@
+2025-05-25 00:03:40,413 - app_logger - INFO - logger:62 - Logger 'app_logger' configured. Logging to file: /Users/jeremy/ai-altcoin-aggregator/src/utils/data_logger_test/app.log
+2025-05-25 00:03:40,413 - app_logger - INFO - logger:76 - This is an info message (default logger).
+2025-05-25 00:03:40,413 - app_logger - WARNING - logger:77 - This is a warning message (default logger).
+2025-05-25 00:03:40,413 - app_logger - ERROR - logger:78 - This is an error message (default logger).

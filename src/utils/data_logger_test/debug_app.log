@@ -1,0 +1,3 @@
+2025-05-25 00:03:40,413 - debug_app - INFO - logger:62 - Logger 'debug_app' configured. Logging to file: /Users/jeremy/ai-altcoin-aggregator/src/utils/data_logger_test/debug_app.log
+2025-05-25 00:03:40,414 - debug_app - DEBUG - logger:82 - This is a debug message (debug_logger - should appear).
+2025-05-25 00:03:40,414 - debug_app - INFO - logger:83 - This is an info message (debug_logger).

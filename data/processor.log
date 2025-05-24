@@ -1,0 +1,28 @@
+2025-05-25 00:23:53,827 - aggregator_proc - INFO - logger:62 - Logger 'aggregator_proc' configured. Logging to file: /Users/jeremy/ai-altcoin-aggregator/data/processor.log
+2025-05-25 00:31:45,079 - aggregator_proc - CRITICAL - aggregator:30 - AGGREGATOR_PROC LOGGER INITIALIZED IN aggregator.py
+2025-05-25 00:32:36,759 - aggregator_proc - INFO - aggregator:117 - Generating Top Coins Report for week ending 2025-05-24 (Top 3)
+2025-05-25 00:32:36,764 - aggregator_proc - INFO - aggregator:171 - Saving report to database: Start=2025-05-18, End=2025-05-24, Report=[{"symbol": "BTC", "average_score": 1.0}, {"symbol": "SOL", "average_score": 1.0}, {"symbol": "ETH", "average_score": 0.93}]
+2025-05-25 00:32:36,765 - aggregator_proc - INFO - aggregator:173 - Weekly top coins report saved successfully.
+2025-05-25 00:34:45,856 - aggregator_proc - CRITICAL - aggregator:115 - TOP_COINS_REPORT FUNCTION ENTERED with week_end_date: 2025-05-24, top_n parameter: 3
+2025-05-25 00:34:45,856 - aggregator_proc - INFO - aggregator:119 - Generating Top Coins Report for week ending 2025-05-24 (Top 3)
+2025-05-25 00:34:45,860 - aggregator_proc - INFO - aggregator:173 - Saving report to database: Start=2025-05-18, End=2025-05-24, Report=[{"symbol": "BTC", "average_score": 1.0}, {"symbol": "SOL", "average_score": 1.0}, {"symbol": "ETH", "average_score": 0.93}]
+2025-05-25 00:34:45,862 - aggregator_proc - INFO - aggregator:175 - Weekly top coins report saved successfully.
+2025-05-25 00:35:37,526 - aggregator_proc - INFO - aggregator:117 - Generating Top Coins Report for week ending 2025-05-24 (Top 3)
+2025-05-25 00:35:37,531 - aggregator_proc - INFO - aggregator:171 - Saving report to database: Start=2025-05-18, End=2025-05-24, Report=[{"symbol": "BTC", "average_score": 1.0}, {"symbol": "SOL", "average_score": 1.0}, {"symbol": "ETH", "average_score": 0.93}]
+2025-05-25 00:35:37,532 - aggregator_proc - INFO - aggregator:173 - Weekly top coins report saved successfully.
+2025-05-25 00:37:46,127 - aggregator_proc - CRITICAL - aggregator:115 - TOP_COINS_REPORT FUNCTION ENTERED with week_end_date: 2025-05-24, top_n parameter: 3
+2025-05-25 00:37:46,128 - aggregator_proc - INFO - aggregator:119 - Generating Top Coins Report for week ending 2025-05-24 (Top 3)
+2025-05-25 00:37:46,129 - aggregator_proc - INFO - aggregator:173 - Saving report to database: Start=2025-05-18, End=2025-05-24, Report=[{"symbol": "BTC", "average_score": 1.0}, {"symbol": "SOL", "average_score": 1.0}, {"symbol": "ETH", "average_score": 0.93}]
+2025-05-25 00:37:46,130 - aggregator_proc - INFO - aggregator:175 - Weekly top coins report saved successfully.
+2025-05-25 00:38:37,988 - aggregator_proc - INFO - aggregator:117 - Generating Top Coins Report for week ending 2025-05-24 (Top 3)
+2025-05-25 00:38:37,991 - aggregator_proc - INFO - aggregator:171 - Saving report to database: Start=2025-05-18, End=2025-05-24, Report=[{"symbol": "BTC", "average_score": 1.0}, {"symbol": "SOL", "average_score": 1.0}, {"symbol": "ETH", "average_score": 0.93}]
+2025-05-25 00:38:37,992 - aggregator_proc - INFO - aggregator:173 - Weekly top coins report saved successfully.
+2025-05-25 00:41:38,988 - aggregator_proc - INFO - aggregator:117 - Generating Top Coins Report for week ending 2025-05-24 (Top 3)
+2025-05-25 00:41:38,991 - aggregator_proc - INFO - aggregator:171 - Saving report to database: Start=2025-05-18, End=2025-05-24, Report=[{"symbol": "BTC", "average_score": 1.0}, {"symbol": "SOL", "average_score": 1.0}, {"symbol": "ETH", "average_score": 0.93}]
+2025-05-25 00:41:38,993 - aggregator_proc - INFO - aggregator:173 - Weekly top coins report saved successfully.
+2025-05-25 00:44:39,664 - aggregator_proc - INFO - aggregator:117 - Generating Top Coins Report for week ending 2025-05-24 (Top 3)
+2025-05-25 00:44:39,673 - aggregator_proc - INFO - aggregator:171 - Saving report to database: Start=2025-05-18, End=2025-05-24, Report=[{"symbol": "BTC", "average_score": 1.0}, {"symbol": "SOL", "average_score": 1.0}, {"symbol": "ETH", "average_score": 0.93}]
+2025-05-25 00:44:39,674 - aggregator_proc - INFO - aggregator:173 - Weekly top coins report saved successfully.
+2025-05-25 00:47:40,398 - aggregator_proc - INFO - aggregator:117 - Generating Top Coins Report for week ending 2025-05-24 (Top 3)
+2025-05-25 00:47:40,403 - aggregator_proc - INFO - aggregator:171 - Saving report to database: Start=2025-05-18, End=2025-05-24, Report=[{"symbol": "BTC", "average_score": 1.0}, {"symbol": "SOL", "average_score": 1.0}, {"symbol": "ETH", "average_score": 0.93}]
+2025-05-25 00:47:40,404 - aggregator_proc - INFO - aggregator:173 - Weekly top coins report saved successfully.
