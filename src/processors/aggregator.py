@@ -3,6 +3,8 @@ import json
 import sys
 import os
 from src.utils.logger import setup_logger
+import logging
+import requests
 
 # Adjust sys.path to allow importing from the project root
 PROJECT_ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -17,7 +19,7 @@ from src.database.db_manager import (
     execute_write_query, # For inserting test scores
     get_coin_id_by_symbol, 
     initialize_database,
-    get_all_coin_symbols # Added for fetching all symbols
+    get_all_coin_symbols, # Added for fetching all symbols
 )
 from src.database.data_loader import (
     load_test_coins_data, 
@@ -89,6 +91,9 @@ def get_weekly_summary_for_coin(coin_id: int, week_end_date: datetime.date) -> d
             average_score = total_score / num_valid_scores
         num_scores = len(scores_data)
         
+    avg_score = average_score
+    logger.info(f"TEMP DEBUG: Coin ID {coin_id} (Symbol: {get_coin_id_by_symbol(coin_id)}), Calculated Avg Score for week {week_start_date.isoformat()}-{week_end_date.isoformat()}: {avg_score}")
+
     return {
         "coin_id": coin_id,
         "week_start_date": week_start_date.isoformat(),
@@ -98,7 +103,54 @@ def get_weekly_summary_for_coin(coin_id: int, week_end_date: datetime.date) -> d
         "aggregation_timestamp_utc": datetime.now(timezone.utc).isoformat()
     }
 
-def generate_and_save_top_coins_report(week_end_date: datetime.date, top_n: int | None = None) -> bool:
+def send_to_discord(webhook_url: str, report_title: str, top_coins_data: list):
+    """
+    Sends a formatted message with the top coins report to a Discord webhook.
+
+    Args:
+        webhook_url (str): The Discord webhook URL.
+        report_title (str): The title for the Discord message.
+        top_coins_data (list): A list of dictionaries, e.g., 
+                                 [{"symbol": "BTC", "average_score": 75.5}, ...]
+    """
+    if not webhook_url:
+        logger.info("Discord webhook URL not configured. Skipping notification.")
+        return
+
+    if not top_coins_data:
+        message_content = f"**{report_title}**\n\nNo data available for this period."
+    else:
+        fields = []
+        for coin in top_coins_data:
+            fields.append({
+                "name": f":coin: {coin.get('symbol', 'N/A')}", 
+                "value": f"**Score: {coin.get('average_score', 'N/A'):.2f}**", 
+                "inline": True
+            })
+        
+        # Ensure an even number of inline fields for better formatting, or add a blank if odd
+        if len(fields) % 2 != 0 and len(fields) > 1: # Avoid adding blank for single coin
+             fields.append({"name": "\u200b", "value": "\u200b", "inline": True}) # Zero-width space for blank field
+
+        embed = {
+            "title": f":bar_chart: {report_title}",
+            "description": "Top coins based on weekly average scores.",
+            "color": 0x00ff00,  # Green color
+            "fields": fields,
+            "footer": {
+                "text": f"Report generated on {datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}"
+            }
+        }
+        message_content = {"embeds": [embed]}
+
+    try:
+        response = requests.post(webhook_url, json=message_content)
+        response.raise_for_status()  # Raise an exception for HTTP errors
+        logger.info(f"Successfully sent report to Discord: {report_title}")
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Error sending report to Discord: {e}")
+
+def generate_and_save_top_coins_report(week_end_date: datetime.date, top_n: int = config.TOP_N_COINS_REPORT) -> bool:
     """
     Generates a report of top N coins based on their average weekly scores
     and saves it to the summaries table.
@@ -170,10 +222,88 @@ def generate_and_save_top_coins_report(week_end_date: datetime.date, top_n: int 
     logger.info(f"Saving report to database: Start={week_start_date_str}, End={week_end_date_str}, Report={top_coins_json}")
     if execute_write_query(insert_report_query, params):
         logger.info("Weekly top coins report saved successfully.")
+
+        # Send to Discord if URL is configured
+        if config.DISCORD_WEBHOOK_URL:
+            report_title = f"Top {resolved_top_n} Coins Report: Week Ending {week_end_date_str}"
+            send_to_discord(config.DISCORD_WEBHOOK_URL, report_title, top_coins_list)
+
         return True
     else:
         logger.error("Failed to save weekly top coins report.")
         return False
+
+def generate_top_n_coins_report(top_n: int = config.TOP_N_COINS_REPORT) -> list[dict]:
+    """
+    Generates a report of the top N coins based on their latest scores.
+    Also includes some recent metrics for context.
+
+    Args:
+        top_n (int): The number of top coins to include in the report. 
+                     Defaults to config.TOP_N_COINS_REPORT.
+
+    Returns:
+        list[dict]: A list of dictionaries, where each dictionary represents a top coin
+                    and contains its details, latest score, and some metrics.
+                    Returns an empty list if no coins or scores are found, or on error.
+    """
+    logger.info(f"Generating top {top_n} coins report...")
+    
+    # Ensure DB is initialized if it hasn't been already (idempotent)
+    # initialize_database() # Usually main.py or scheduler would handle this.
+    # For standalone testing, it might be needed. Let's assume DB is up.
+
+    query_coins_and_latest_scores = """
+    SELECT 
+        c.coin_id,
+        c.symbol,
+        c.name,
+        s.score,
+        s.timestamp AS score_timestamp,
+        (SELECT m.price FROM metrics m WHERE m.coin_id = c.coin_id ORDER BY m.timestamp DESC LIMIT 1) AS latest_price,
+        (SELECT m.market_cap FROM metrics m WHERE m.coin_id = c.coin_id ORDER BY m.timestamp DESC LIMIT 1) AS latest_market_cap,
+        (SELECT m.timestamp FROM metrics m WHERE m.coin_id = c.coin_id ORDER BY m.timestamp DESC LIMIT 1) AS latest_metrics_timestamp
+    FROM coins c
+    JOIN (
+        SELECT 
+            coin_id, 
+            score, 
+            timestamp,
+            ROW_NUMBER() OVER(PARTITION BY coin_id ORDER BY timestamp DESC) as rn
+        FROM scores
+    ) s ON c.coin_id = s.coin_id AND s.rn = 1
+    ORDER BY s.score DESC
+    LIMIT ?;
+    """
+    
+    try:
+        top_coins_data = execute_read_query(query_coins_and_latest_scores, params=(top_n,), fetch_all=True)
+        
+        if not top_coins_data:
+            logger.warning("No coin data or scores found to generate a top N report.")
+            return []
+
+        report = []
+        for row in top_coins_data:
+            coin_id, symbol, name, score, score_ts, price, mcap, metrics_ts = row
+            report.append({
+                "rank": len(report) + 1,
+                "coin_id": coin_id,
+                "symbol": symbol,
+                "name": name,
+                "latest_score": score,
+                "score_timestamp": score_ts,
+                "latest_price_usd": price,
+                "latest_market_cap_usd": mcap,
+                "latest_metrics_timestamp": metrics_ts
+            })
+        
+        logger.info(f"Successfully generated report for top {len(report)} coins.")
+        return report
+        
+    except Exception as e:
+        logger.error(f"Error generating top N coins report: {e}", exc_info=True)
+        return []
 
 if __name__ == "__main__":
     logger.info("--- Testing Weekly Aggregator & Report Generation ---")
@@ -247,4 +377,34 @@ if __name__ == "__main__":
     else:
         logger.warning("Report not saved as per generate_and_save_top_coins_report function logic.")
     
-    logger.info("--- Aggregator & Report Test Finished ---") 
+    logger.info("--- Aggregator & Report Test Finished ---")
+
+    logger.info("--- Aggregator Script Test Run ---")
+    
+    # For standalone testing, ensure the database exists and has some data.
+    # You might need to run main.py first to populate it.
+    # initialize_database() # Call if you're sure it's needed for a standalone test setup
+    
+    print(f"Attempting to generate top {config.TOP_N_COINS_REPORT} coins report...")
+    top_n_report = generate_top_n_coins_report(config.TOP_N_COINS_REPORT)
+    
+    if top_n_report:
+        print("\n--- Top Coins Report ---")
+        for coin_entry in top_n_report:
+            print(json.dumps(coin_entry, indent=2))
+        print(f"\nReport generated for {len(top_n_report)} coins.")
+    else:
+        print("\nNo data to generate report, or an error occurred. Check logs.")
+        
+    # Example: Generate report for a different N
+    custom_top_n = 1
+    print(f"\nAttempting to generate top {custom_top_n} coin report...")
+    top_one_report = generate_top_n_coins_report(custom_top_n)
+    if top_one_report:
+        print("\n--- Top Coin Report (N=1) ---")
+        for coin_entry in top_one_report:
+            print(json.dumps(coin_entry, indent=2))
+    else:
+        print("\nNo data to generate report for N=1, or an error occurred.")
+
+    logger.info("--- Aggregator Script Test Finished ---") 

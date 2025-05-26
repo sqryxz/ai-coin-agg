@@ -35,7 +35,62 @@ This project collects, processes, scores, and summarizes data for various altcoi
     pip install -r requirements.txt
     ```
 4.  **Set up the `.env` file:**
-    Copy `.env.example` (if provided, otherwise create `.env`) and fill in any necessary variables. For the current version, it primarily defines `PYTHON_ENV`.
+    Copy `.env.example` (if provided, otherwise create `.env`) and fill in any necessary API keys.
+    Refer to `src/utils/config.py` for API keys used (e.g., `ETHERSCAN_API_KEY`, `CRYPTO_PANIC_API_KEY`).
+    If API keys are not provided, the respective data collectors will either fail gracefully or return limited/mock data.
+
+## How It Works
+
+The AI Altcoin Aggregator is designed to run as an automated system, orchestrated by a scheduler. It continuously collects, processes, scores, and summarizes data for a predefined list of cryptocurrencies.
+
+**1. Scheduled Data Pipeline (`main_data_pipeline_job` run by `scheduler.py`):**
+
+This is the core data processing engine of the application. It runs at a configurable interval (e.g., hourly, as defined by `HOURLY_PIPELINE_INTERVAL_MINUTES` in `src/utils/config.py`).
+
+When this job runs, it executes `run_full_data_pipeline()` from `src/main.py`, which performs the following steps:
+
+*   **Initialization:** 
+    *   Ensures the SQLite database (`data/database.db`) is initialized and the schema (from `src/database/schema.sql`) exists.
+    *   Loads or updates the list of tracked cryptocurrencies from `COIN_MAPPING` in `src/utils/config.py` into the `coins` table in the database. This mapping defines which coins to process and their specific details (like contract addresses for ERC20 tokens).
+*   **Data Collection & Processing Loop (for each tracked coin):**
+    1.  **CoinGecko Data:** Fetches current market data (price, volume, market cap) and historical market data using the CoinGecko API.
+    2.  **Etherscan Data:** For ERC20 tokens (identified by a `contract_address` in `COIN_MAPPING`), it fetches on-chain data such as active address proxies, transaction count proxies, and total token supply from the Etherscan API.
+    3.  **CryptoPanic Data:** Fetches news articles related to the coin from the CryptoPanic API, filters them, and calculates an aggregate sentiment score based on vote counts.
+    4.  **GDELT Data:** Queries the GDELT DOC 2.0 API for news articles mentioning the coin and extracts an average sentiment tone from these articles.
+    5.  **Data Cleaning (`src/processors/data_cleaner.py`):** The raw data collected from all sources is passed to `clean_coin_data`. This function handles missing values by imputing sensible defaults (e.g., 0.0 for numerical fields, 0 for counts), ensures correct data types, and logs any cleaning actions.
+    6.  **Scoring (`src/processors/scorer.py`):** The cleaned data is then fed into `calculate_coin_score`. This function calculates a composite score (0-100) for the coin based on a weighted sum of several transformed metrics. Key aspects of the scoring include:
+        *   Logarithmic scaling for metrics with wide ranges (e.g., volume, market cap).
+        *   Rescaling of sentiment scores to a common range (0-1).
+        *   A **mention multiplier**: The total number of mentions (from CryptoPanic + GDELT article count) influences the weight of the sentiment scores. Higher mentions can amplify the impact of positive or negative sentiment.
+        *   A placeholder for future **volume momentum** calculation.
+    7.  **Database Persistence:**
+        *   The collected and cleaned metrics (price, volume, market cap, active addresses, etc.) are saved to the `metrics` table.
+        *   The calculated composite score and its timestamp are saved to the `scores` table.
+*   **Logging:** All significant actions, errors, and results from this pipeline are logged to `data/app.log` (and to the console if run directly).
+
+**2. Scheduled Summary Report (`weekly_summary_job` run by `scheduler.py`):**
+
+This job is responsible for generating periodic summary reports. It also runs at a configurable interval (e.g., daily or weekly, as defined by `WEEKLY_SUMMARY_INTERVAL_MINUTES` in `src/utils/config.py` - note that the variable name implies weekly, but the default config value is for frequent testing).
+
+When this job runs, it executes `generate_and_save_top_coins_report()` from `src/processors/aggregator.py`:
+
+*   **Data Aggregation:**
+    *   Determines the reporting period (e.g., the week ending on the current day).
+    *   For every coin listed in the `coins` table, it fetches all scores recorded within the defined reporting period from the `scores` table.
+    *   Calculates an average score for each coin over that period.
+*   **Report Generation & Saving:**
+    *   Ranks the coins based on their average weekly scores.
+    *   Generates a "Top N Coins" report (where N is configurable via `TOP_N_COINS_REPORT` in `config.py`), listing the top coins and their average scores.
+    *   Saves this report (typically as a JSON string) into the `summaries` table in the database, along with the start and end dates of the report period.
+*   **Logging:** Activities related to summary generation are logged to `data/processor.log`.
+
+**Overall Automated Flow:**
+
+The `scheduler.py` script acts as the heart of the automation. It ensures that the data pipeline runs regularly to keep coin data fresh and scores updated. Concurrently, the summary job runs to periodically analyze these scores and save insightful reports.
+
+This setup allows for continuous, unattended operation of the AI Altcoin Aggregator, providing up-to-date metrics, scores, and summary views over time.
+
+**(End of "How It Works" Section)**
 
 ## Running the Application
 

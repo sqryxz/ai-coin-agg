@@ -1,194 +1,230 @@
 from datetime import datetime, timezone
 import json
+import math # For math.log
 
-REQUIRED_METRICS_FOR_SCORING = [
-    "price", 
-    "volume", 
-    "active_addresses", 
-    "mentions", 
-    "sentiment_score"
-]
+# Define weights for each metric
+# With mentions multiplier, direct mention weights are removed.
+# Previous total weight for mentions/gdelt_articles was 0.10 + 0.10 = 0.20
+# Redistributing this: +0.05 to volume, market_cap, active_addresses, cp_sentiment.
+METRIC_WEIGHTS = {
+    "volume": 0.20, # Was 0.15
+    "market_cap": 0.20, # Was 0.15
+    "active_addresses": 0.20, # Was 0.15
+    "etherscan_transaction_count_proxy": 0.10,
+    "sentiment_score": 0.20, # CryptoPanic sentiment, was 0.15
+    "gdelt_sentiment_score": 0.10,
+    # "mentions" and "gdelt_article_count" are no longer directly weighted here.
+}
+
+# Placeholder for Volume Momentum component - to be developed when historical data is available to scorer
+VOLUME_MOMENTUM_WEIGHT = 0.0 # Not yet active
+
+def _calculate_mention_multiplier(total_mentions: int) -> float:
+    """Calculates a sentiment multiplier based on total mentions."""
+    if total_mentions < 100:
+        return 0.8
+    elif total_mentions < 1000:
+        return 1.0
+    elif total_mentions < 10000:
+        return 1.2
+    else: # >= 10000
+        return 1.5
+
+def _transform_value(metric_name: str, value: float | int) -> float:
+    """Applies a transformation to a metric value to somewhat normalize or scale it."""
+    if value is None: # Should have been cleaned to 0 or 0.0 by data_cleaner
+        value = 0
+
+    # Logarithmic scaling for large-range, non-negative values
+    # Mentions and gdelt_article_count are used for multiplier, not directly transformed here for weighting
+    if metric_name in ["volume", "market_cap", "active_addresses", "etherscan_transaction_count_proxy"]:
+        return math.log(1 + float(value))
+    
+    elif metric_name == "sentiment_score": # CryptoPanic sentiment, original range -1 to 1
+        return (float(value) + 1) / 2 # Rescale from [-1, 1] to [0, 1]
+    
+    elif metric_name == "gdelt_sentiment_score": # GDELT tone, assume approx -10 to 10
+        scaled_value = (float(value) + 10) / 20 # Rescale from approx [-10, 10] to [0, 1]
+        return max(0.0, min(scaled_value, 1.0)) # Clamp
+    
+    return float(value) # Default for any other metric not explicitly transformed
 
 def calculate_coin_score(cleaned_data: dict) -> dict:
     """
-    Calculates a score for a single coin based on its cleaned data.
-
-    Args:
-        cleaned_data (dict): The cleaned data dictionary from data_cleaner.py.
-
-    Returns:
-        dict: A dictionary containing the symbol, score, and scoring details.
+    Calculates a composite score for a single coin based on its cleaned data
+    using a weighted sum of transformed metrics, with sentiment modulated by mentions.
+    Volume momentum is a placeholder for future enhancement.
     """
     symbol = cleaned_data.get("symbol", "UNKNOWN")
+    coingecko_id = cleaned_data.get("coingecko_id")
     timestamp = datetime.now(timezone.utc).isoformat()
     
-    # Check for eligibility
-    is_eligible = True
-    for metric in REQUIRED_METRICS_FOR_SCORING:
-        if cleaned_data.get(metric) is None:
-            is_eligible = False
-            break
+    raw_weighted_score = 0.0
+    contributing_metrics = {}
 
-    if not is_eligible:
-        return {
-            "symbol": symbol,
-            "score": 0.0,
-            "base_sentiment_on_scoring": None,
-            "bonuses_applied": ["ineligible_missing_required_metrics"],
-            "score_calculation_timestamp_utc": timestamp
-        }
+    # Calculate total mentions for sentiment multiplier
+    cp_mentions = cleaned_data.get("mentions", 0)
+    gdelt_articles = cleaned_data.get("gdelt_article_count", 0)
+    total_mentions = cp_mentions + gdelt_articles
+    mention_multiplier = _calculate_mention_multiplier(total_mentions)
 
-    # Eligible for scoring
-    current_score = 0.0
-    bonuses_applied = []
+    contributing_metrics["mention_analysis"] = {
+        "cp_mentions": cp_mentions,
+        "gdelt_article_count": gdelt_articles,
+        "total_mentions": total_mentions,
+        "mention_multiplier_for_sentiment": mention_multiplier
+    }
+
+    for metric, weight in METRIC_WEIGHTS.items():
+        value = cleaned_data.get(metric, 0.0) # Default to 0.0 if somehow missing post-cleaning
+        
+        transformed_value = _transform_value(metric, value)
+        metric_contribution = 0.0
+
+        current_weight = weight
+        if metric == "sentiment_score" or metric == "gdelt_sentiment_score":
+            metric_contribution = current_weight * mention_multiplier * transformed_value
+            # Store effective weight for transparency
+            contributing_metrics[metric] = {
+                "original_value": value,
+                "transformed_value": round(transformed_value, 4),
+                "base_weight": current_weight,
+                "mention_multiplier_applied": mention_multiplier,
+                "effective_weight": round(current_weight * mention_multiplier, 4),
+                "contribution": round(metric_contribution, 4)
+            }
+        else:
+            metric_contribution = current_weight * transformed_value
+            contributing_metrics[metric] = {
+                "original_value": value,
+                "transformed_value": round(transformed_value, 4),
+                "weight": current_weight,
+                "contribution": round(metric_contribution, 4)
+            }
+        raw_weighted_score += metric_contribution
     
-    base_sentiment = cleaned_data.get("sentiment_score", 0.0) # Should be present due to eligibility check
-    current_score = base_sentiment 
+    # --- Volume Momentum (Placeholder) ---
+    # This section is a placeholder. True momentum requires historical data.
+    # For now, it does not contribute to the score.
+    volume_momentum_score_component = 0.0 
+    # Potential simple proxy (not used for score yet):
+    # current_volume = cleaned_data.get("volume", 0.0)
+    # market_cap = cleaned_data.get("market_cap", 0.0)
+    # vol_to_mcap_ratio = (current_volume / market_cap) if market_cap > 0 else 0
+    contributing_metrics["volume_momentum"] = {
+        "status": "Placeholder - Full implementation requires historical volume data.",
+        "current_contribution": volume_momentum_score_component,
+        "weight_to_be_assigned": VOLUME_MOMENTUM_WEIGHT
+    }
+    # raw_weighted_score += volume_momentum_score_component * VOLUME_MOMENTUM_WEIGHT # If it were active
 
-    # Mentions bonus
-    mentions = cleaned_data.get("mentions")
-    if mentions is not None:
-        if mentions > 50000:
-            current_score += 0.10
-            bonuses_applied.append("mentions_high (>{})".format(50000))
-        elif mentions > 10000:
-            current_score += 0.05
-            bonuses_applied.append("mentions_medium (>{})".format(10000))
-
-    # Active Addresses bonus
-    active_addresses = cleaned_data.get("active_addresses")
-    if active_addresses is not None:
-        if active_addresses > 200000:
-            current_score += 0.10
-            bonuses_applied.append("active_addresses_high (>{})".format(200000))
-        elif active_addresses > 50000:
-            current_score += 0.05
-            bonuses_applied.append("active_addresses_medium (>{})".format(50000))
-            
-    # Transaction Volume bonus
-    transaction_volume_usd = cleaned_data.get("transaction_volume_usd")
-    if transaction_volume_usd is not None:
-        if transaction_volume_usd > 500000000:
-            current_score += 0.10
-            bonuses_applied.append("tx_volume_high (>{})".format(500000000))
-        elif transaction_volume_usd > 100000000:
-            current_score += 0.05
-            bonuses_applied.append("tx_volume_medium (>{})".format(100000000))
-
-    # Clamp the score between 0.0 and 1.0
-    final_score = max(0.0, min(current_score, 1.0))
+    # --- Final Score Scaling ---
+    # Max possible raw_weighted_score sum needs re-evaluation with mention multiplier.
+    # If M_max=1.5, sentiment weights (0.20+0.10=0.30) * 1.5 = 0.45 for sentiment part.
+    # Other weights sum to 0.20+0.20+0.10 = 0.50.
+    # Max transformed values for logs (e.g. market_cap, volume, active_addresses) still around 10-28.
+    # Example Max Contribution (rough):
+    # Volume (log~25, w=0.20) -> 5.0
+    # MCap   (log~28, w=0.20) -> 5.6
+    # ActiveA(log~14, w=0.20) -> 2.8
+    # EthTxC (log~10, w=0.10) -> 1.0 (if applicable)
+    # Max Sentiment part (transformed to 1, multiplied by M=1.5, total weight 0.30) -> 0.45
+    # Total sum approx: 5.0 + 5.6 + 2.8 + 1.0 + 0.45 = 14.85 (if ERC20 with high tx count)
+    # Or without EthTxC: ~13.85
+    # Scaling factor: 100 / ~14 = ~7.1
+    scaling_factor = 7.0 # Adjusted based on new max raw score estimate
+    final_score = raw_weighted_score * scaling_factor
+    final_score_clamped = max(0.0, min(final_score, 100.0))
     
     return {
+        "coingecko_id": coingecko_id,
         "symbol": symbol,
-        "score": final_score,
-        "base_sentiment_on_scoring": base_sentiment,
-        "bonuses_applied": bonuses_applied if bonuses_applied else ["none"],
+        "score": round(final_score_clamped, 2),
+        "raw_weighted_score": round(raw_weighted_score, 4),
+        "mention_multiplier_applied_to_sentiment": mention_multiplier,
+        "scaling_factor_applied": scaling_factor,
+        "contributing_metrics": contributing_metrics,
         "score_calculation_timestamp_utc": timestamp
     }
 
 if __name__ == "__main__":
-    print("--- Testing calculate_coin_score ---")
+    print("--- Testing calculate_coin_score (with Mention Multiplier & Volume Momentum Placeholder) ---")
 
+    # Test cases need to be updated to reflect new structure and metrics
+    # Test data should include `mentions` and `gdelt_article_count` for the multiplier.
     test_cases = [
         {
-            "name": "Eligible - High Score Potential",
+            "name": "High Potential Coin (BTC-like) - High Mentions",
             "data": {
-                "symbol": "BTC", "price": 60000, "volume": 5e10, 
-                "active_addresses": 250000, "mentions": 60000, 
-                "sentiment_score": 0.8, "transaction_volume_usd": 6e8,
+                "coingecko_id": "bitcoin", "symbol": "BTC",
+                "volume": 50e9, "market_cap": 1.2e12, "active_addresses": 1e6,
+                "etherscan_transaction_count_proxy": 0,
+                "mentions": 150000, "sentiment_score": 0.8, # CP transformed: 0.9
+                "gdelt_sentiment_score": 2.0, # GDELT transformed: 0.6
+                "gdelt_article_count": 5000, # total mentions = 155000 -> M=1.5
                 "cleaned_at_utc": "sometime"
-            },
-            "expected_base_sentiment": 0.8,
-            "expected_bonuses_toContain": ["mentions_high", "active_addresses_high", "tx_volume_high"]
-            # Expected score: 0.8 (sentiment) + 0.1 (mentions) + 0.1 (active_addr) + 0.1 (tx_vol) = 1.1, clamped to 1.0
+            }
         },
         {
-            "name": "Eligible - Mid Score Potential",
+            "name": "Mid Potential ERC20 (LINK-like) - Medium Mentions",
             "data": {
-                "symbol": "ETH", "price": 4000, "volume": 2e10, 
-                "active_addresses": 60000, "mentions": 15000, 
-                "sentiment_score": 0.6, "transaction_volume_usd": 1.5e8,
+                "coingecko_id": "chainlink", "symbol": "LINK",
+                "volume": 300e6, "market_cap": 10e9, "active_addresses": 70000,
+                "etherscan_transaction_count_proxy": 15000,
+                "mentions": 1500, "sentiment_score": 0.6, # CP transformed: 0.8
+                "gdelt_sentiment_score": -1.0, # GDELT transformed: 0.45
+                "gdelt_article_count": 500, # total mentions = 2000 -> M=1.2
                 "cleaned_at_utc": "sometime"
-            },
-            "expected_base_sentiment": 0.6,
-            "expected_bonuses_toContain": ["mentions_medium", "active_addresses_medium", "tx_volume_medium"]
-            # Expected score: 0.6 + 0.05 + 0.05 + 0.05 = 0.75
+            }
         },
         {
-            "name": "Eligible - Only Sentiment (low other metrics)",
+            "name": "Lower Potential - Low Mentions",
             "data": {
-                "symbol": "ADA", "price": 1, "volume": 1e9, 
-                "active_addresses": 10000, "mentions": 1000, 
-                "sentiment_score": 0.5, "transaction_volume_usd": 1e7,
+                "coingecko_id": "newcoin", "symbol": "NEWC",
+                "volume": 1e6, "market_cap": 50e6, "active_addresses": 1000,
+                "etherscan_transaction_count_proxy": 50,
+                "mentions": 80, "sentiment_score": 0.1, # CP transformed: 0.55
+                "gdelt_sentiment_score": -5.0, # GDELT transformed: 0.25
+                "gdelt_article_count": 10, # total mentions = 90 -> M=0.8
                 "cleaned_at_utc": "sometime"
-            },
-            "expected_base_sentiment": 0.5,
-            "expected_bonuses_toContain": ["none"]
-            # Expected score: 0.5 (no bonuses meet thresholds)
+            }
         },
         {
-            "name": "Ineligible - Missing Price",
+            "name": "Zeroed/Default Data - Min Mentions",
             "data": {
-                "symbol": "XYZ", "price": None, "volume": 5e7, 
-                "active_addresses": 500, "mentions": 50, 
-                "sentiment_score": 0.9, "transaction_volume_usd": 1e6,
-                "cleaned_at_utc": "sometime"
-            },
-            "expected_score": 0.0,
-            "expected_bonuses_toContain": ["ineligible_missing_required_metrics"]
-        },
-        {
-            "name": "Eligible - Score would be negative from sentiment (test clamping min)",
-            "data": {
-                "symbol": "NEG", "price": 10, "volume": 1e8,
-                "active_addresses": 1000, "mentions": 100,
-                "sentiment_score": -0.5, # Hypothetical if sentiment could be negative
-                "transaction_volume_usd": 1e6,
-                "cleaned_at_utc": "sometime"
-            },
-            "expected_base_sentiment": -0.5,
-            "expected_bonuses_toContain": ["none"]
-            # Expected score: -0.5, clamped to 0.0
-        },
-        {
-            "name": "Eligible - All None for bonus categories, only sentiment",
-            "data": {
-                "symbol": "SENTONLY", "price": 100, "volume": 1e9, 
-                "active_addresses": 10000, "mentions": 1000, 
-                "sentiment_score": 0.77, 
-                "transaction_volume_usd": None, # Explicitly None for a bonus category
-                "cleaned_at_utc": "sometime"
-            },
-            "expected_base_sentiment": 0.77,
-            "expected_bonuses_toContain": ["none"]
-            # Expected score: 0.77
+                "coingecko_id": "failcoin", "symbol": "FAIL",
+                "volume": 0, "market_cap": 0, "active_addresses": 0,
+                "etherscan_transaction_count_proxy": 0,
+                "mentions": 0, "sentiment_score": 0.0, # CP transformed: 0.5
+                "gdelt_sentiment_score": 0.0, # GDELT transformed: 0.5
+                "gdelt_article_count": 0, # total mentions = 0 -> M=0.8
+                "cleaned_at_utc": "sometime", "collection_errors": ["API failed"]
+            }
         }
     ]
 
+    # Define all keys the scorer might access from cleaned_data based on METRIC_WEIGHTS and mention calculation
+    expected_keys_from_cleaned_data = list(METRIC_WEIGHTS.keys()) + ["mentions", "gdelt_article_count", "coingecko_id", "symbol", "cleaned_at_utc"]
+
     for i, case in enumerate(test_cases):
         print(f"\n--- Test Case {i+1}: {case['name']} ---")
-        result = calculate_coin_score(case["data"])
-        print(json.dumps(result, indent=4))
         
-        # Basic validation for key fields
+        # Ensure test data provides all necessary fields, defaulting if not in case['data']
+        full_test_data = {key: 0 for key in expected_keys_from_cleaned_data if key not in ["coingecko_id", "symbol", "cleaned_at_utc"]} # Default numeric to 0
+        full_test_data["coingecko_id"] = None
+        full_test_data["symbol"] = "TEST_SYM"
+        full_test_data["cleaned_at_utc"] = "timestamp"
+        full_test_data.update(case["data"]) # Overwrite with actual test case data
+        
+        result = calculate_coin_score(full_test_data)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        
         assert "score" in result, f"Test Case {i+1} failed: 'score' missing"
-        assert "base_sentiment_on_scoring" in result, f"Test Case {i+1} failed: 'base_sentiment_on_scoring' missing"
-        assert "bonuses_applied" in result, f"Test Case {i+1} failed: 'bonuses_applied' missing"
-        assert "score_calculation_timestamp_utc" in result, f"Test Case {i+1} failed: 'timestamp' missing"
-        
-        if "expected_score" in case:
-            assert result["score"] == case["expected_score"], \
-                f"Test Case {i+1} score mismatch: Expected {case['expected_score']}, Got {result['score']}"
-        
-        if "expected_base_sentiment" in case and result["base_sentiment_on_scoring"] is not None:
-             assert abs(result["base_sentiment_on_scoring"] - case["expected_base_sentiment"]) < 0.001, \
-                f"Test Case {i+1} base_sentiment mismatch: Expected {case['expected_base_sentiment']}, Got {result['base_sentiment_on_scoring']}"
-        elif "expected_base_sentiment" in case and result["base_sentiment_on_scoring"] is None and case["expected_base_sentiment"] is not None:
-            print(f"WARN Test Case {i+1}: Expected base_sentiment {case['expected_base_sentiment']} but got None (might be OK if ineligible)")
-        
-        if "expected_bonuses_toContain" in case:
-            for bonus_keyword in case["expected_bonuses_toContain"]:
-                found_bonus = any(bonus_keyword in applied_bonus for applied_bonus in result["bonuses_applied"])
-                assert found_bonus, f"Test Case {i+1}: Expected bonus containing '{bonus_keyword}' not found in {result['bonuses_applied']}"
+        assert 0 <= result["score"] <= 100, f"Test Case {i+1} score ({result['score']}) out of range [0, 100]"
+        assert "contributing_metrics" in result
+        assert "mention_analysis" in result["contributing_metrics"]
+        assert "volume_momentum" in result["contributing_metrics"]
+        for metric_name in METRIC_WEIGHTS.keys():
+            assert metric_name in result["contributing_metrics"], f"Metric {metric_name} missing from contribution details"
 
     print("\n--- Scorer Test Finished ---") 

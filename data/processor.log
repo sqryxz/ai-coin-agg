@@ -26,3 +26,68 @@
 2025-05-25 00:47:40,398 - aggregator_proc - INFO - aggregator:117 - Generating Top Coins Report for week ending 2025-05-24 (Top 3)
 2025-05-25 00:47:40,403 - aggregator_proc - INFO - aggregator:171 - Saving report to database: Start=2025-05-18, End=2025-05-24, Report=[{"symbol": "BTC", "average_score": 1.0}, {"symbol": "SOL", "average_score": 1.0}, {"symbol": "ETH", "average_score": 0.93}]
 2025-05-25 00:47:40,404 - aggregator_proc - INFO - aggregator:173 - Weekly top coins report saved successfully.
+2025-05-25 00:50:41,059 - aggregator_proc - INFO - aggregator:117 - Generating Top Coins Report for week ending 2025-05-24 (Top 3)
+2025-05-25 00:50:41,064 - aggregator_proc - INFO - aggregator:171 - Saving report to database: Start=2025-05-18, End=2025-05-24, Report=[{"symbol": "BTC", "average_score": 1.0}, {"symbol": "SOL", "average_score": 1.0}, {"symbol": "ETH", "average_score": 0.93}]
+2025-05-25 00:50:41,066 - aggregator_proc - INFO - aggregator:173 - Weekly top coins report saved successfully.
+2025-05-25 23:36:19,017 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-25 23:36:19,025 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 75.04}, {"symbol": "LINK", "average_score": 75.04}, {"symbol": "UNI", "average_score": 72.115}]
+2025-05-25 23:36:19,026 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-25 23:39:19,109 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-25 23:39:19,122 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 75.04}, {"symbol": "LINK", "average_score": 75.04}, {"symbol": "LINK", "average_score": 75.04}]
+2025-05-25 23:39:19,123 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-25 23:42:19,896 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-25 23:42:19,922 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 75.038}, {"symbol": "LINK", "average_score": 75.038}, {"symbol": "LINK", "average_score": 75.038}]
+2025-05-25 23:42:19,924 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-25 23:45:19,973 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-25 23:45:19,992 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 75.0214}, {"symbol": "LINK", "average_score": 75.0214}, {"symbol": "LINK", "average_score": 75.0214}]
+2025-05-25 23:45:19,993 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-25 23:48:20,431 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-25 23:48:20,454 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 75.0178}, {"symbol": "LINK", "average_score": 75.0178}, {"symbol": "LINK", "average_score": 75.0178}]
+2025-05-25 23:48:20,456 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-25 23:51:33,149 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-25 23:51:33,188 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 75.0125}, {"symbol": "LINK", "average_score": 75.0125}, {"symbol": "LINK", "average_score": 75.0125}]
+2025-05-25 23:51:33,189 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-25 23:54:33,396 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-25 23:54:33,433 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 75.0093}, {"symbol": "LINK", "average_score": 75.0093}, {"symbol": "LINK", "average_score": 75.0093}]
+2025-05-25 23:54:33,434 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-25 23:57:34,169 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-25 23:57:34,215 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 75.005}, {"symbol": "LINK", "average_score": 75.005}, {"symbol": "LINK", "average_score": 75.005}]
+2025-05-25 23:57:34,216 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:00:34,407 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:00:34,452 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 75.0022}, {"symbol": "LINK", "average_score": 75.0022}, {"symbol": "LINK", "average_score": 75.0022}]
+2025-05-26 00:00:34,454 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:03:35,034 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:03:35,090 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 75.0005}, {"symbol": "LINK", "average_score": 75.0005}, {"symbol": "LINK", "average_score": 75.0005}]
+2025-05-26 00:03:35,091 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:06:54,962 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:06:55,018 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 74.9936}, {"symbol": "LINK", "average_score": 74.9936}, {"symbol": "LINK", "average_score": 74.9936}]
+2025-05-26 00:06:55,020 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:09:55,751 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:09:55,801 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 74.9883}, {"symbol": "LINK", "average_score": 74.9883}, {"symbol": "LINK", "average_score": 74.9883}]
+2025-05-26 00:09:55,802 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:12:56,251 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:12:56,311 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "LINK", "average_score": 74.9827}, {"symbol": "LINK", "average_score": 74.9827}, {"symbol": "LINK", "average_score": 74.9827}]
+2025-05-26 00:12:56,312 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:37:27,607 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:37:27,609 - aggregator_proc - WARNING - aggregator:120 - No coin symbols found in the database. Cannot generate report.
+2025-05-26 00:43:53,433 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:43:53,436 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "BTC", "average_score": 93.88}, {"symbol": "ETH", "average_score": 89.44}, {"symbol": "SOL", "average_score": 84.75}]
+2025-05-26 00:43:53,437 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:44:19,930 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:44:19,937 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "BTC", "average_score": 93.88}, {"symbol": "ETH", "average_score": 89.44}, {"symbol": "SOL", "average_score": 84.75}]
+2025-05-26 00:44:19,938 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:46:54,265 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:46:54,273 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "BTC", "average_score": 93.88}, {"symbol": "ETH", "average_score": 89.44}, {"symbol": "SOL", "average_score": 84.7525}]
+2025-05-26 00:46:54,274 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:49:54,945 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:49:54,953 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "BTC", "average_score": 93.8817}, {"symbol": "ETH", "average_score": 89.4417}, {"symbol": "SOL", "average_score": 84.7567}]
+2025-05-26 00:49:54,954 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:52:55,415 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:52:55,422 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "BTC", "average_score": 93.8837}, {"symbol": "ETH", "average_score": 89.4437}, {"symbol": "SOL", "average_score": 84.76}]
+2025-05-26 00:52:55,423 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:56:08,073 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:56:08,077 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "BTC", "average_score": 93.8855}, {"symbol": "ETH", "average_score": 89.4455}, {"symbol": "SOL", "average_score": 84.7627}]
+2025-05-26 00:56:08,078 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.
+2025-05-26 00:59:08,901 - aggregator_proc - INFO - aggregator:116 - Generating Top Coins Report for week ending 2025-05-25 (Top 3)
+2025-05-26 00:59:08,907 - aggregator_proc - INFO - aggregator:170 - Saving report to database: Start=2025-05-19, End=2025-05-25, Report=[{"symbol": "BTC", "average_score": 93.8862}, {"symbol": "ETH", "average_score": 89.4462}, {"symbol": "SOL", "average_score": 84.7638}]
+2025-05-26 00:59:08,908 - aggregator_proc - INFO - aggregator:172 - Weekly top coins report saved successfully.

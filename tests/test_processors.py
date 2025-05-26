@@ -9,7 +9,7 @@ if PROJECT_ROOT_PATH not in sys.path:
     sys.path.append(PROJECT_ROOT_PATH)
 
 from src.processors.data_cleaner import clean_coin_data
-from src.processors.scorer import calculate_coin_score, REQUIRED_METRICS_FOR_SCORING
+from src.processors.scorer import calculate_coin_score #, REQUIRED_METRICS_FOR_SCORING
 
 class TestDataCleaner(unittest.TestCase):
 

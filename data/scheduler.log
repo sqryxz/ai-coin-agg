@@ -598,3 +598,403 @@ TypeError: unsupported operand type(s) for -: 'str' and 'datetime.timedelta'
 2025-05-25 00:48:41,651 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
 2025-05-25 00:48:41,652 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
 2025-05-25 00:48:41,652 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-25 00:49:41,864 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-25 00:49:41,866 - scheduler_app - INFO - scheduler:33 - Found 5 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'ETH', 'SOL']
+2025-05-25 00:49:41,866 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-25 00:49:41,867 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-25 00:49:41,867 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-25 00:49:41,870 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-25 00:49:41,870 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-25 00:49:41,871 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-25 00:49:41,871 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-25 00:49:41,873 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-25 00:49:41,873 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-25 00:49:41,875 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-25 00:49:41,875 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-25 00:50:41,058 - scheduler_app - INFO - scheduler:44 - --- Weekly Summary Task Started ---
+2025-05-25 00:50:41,059 - scheduler_app - INFO - scheduler:48 - Generating weekly summary report for week ending: 2025-05-24
+2025-05-25 00:50:41,066 - scheduler_app - INFO - scheduler:50 - Successfully generated and saved weekly summary report.
+2025-05-25 00:50:41,066 - scheduler_app - INFO - scheduler:53 - --- Weekly Summary Task Finished ---
+2025-05-25 00:50:42,070 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-25 00:50:42,071 - scheduler_app - INFO - scheduler:33 - Found 5 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'ETH', 'SOL']
+2025-05-25 00:50:42,071 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-25 00:50:42,072 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-25 00:50:42,072 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-25 00:50:42,075 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-25 00:50:42,075 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-25 00:50:42,075 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-25 00:50:42,075 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-25 00:50:42,077 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-25 00:50:42,077 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-25 00:50:42,079 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-25 00:50:42,079 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-25 00:51:42,287 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-25 00:51:42,290 - scheduler_app - INFO - scheduler:33 - Found 5 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'ETH', 'SOL']
+2025-05-25 00:51:42,290 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-25 00:51:42,291 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-25 00:51:42,291 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-25 00:51:42,295 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-25 00:51:42,295 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-25 00:51:42,295 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-25 00:51:42,295 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-25 00:51:42,297 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-25 00:51:42,297 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-25 00:51:42,298 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-25 00:51:42,298 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-25 00:52:42,527 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-25 00:52:42,531 - scheduler_app - INFO - scheduler:33 - Found 5 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'ETH', 'SOL']
+2025-05-25 00:52:42,532 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-25 00:52:42,533 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-25 00:52:42,533 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-25 00:52:42,538 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-25 00:52:42,538 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-25 00:52:42,538 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-25 00:52:42,538 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-25 00:52:42,540 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-25 00:52:42,540 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-25 00:52:42,543 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-25 00:52:42,543 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-25 23:33:18,153 - scheduler_app - INFO - scheduler:51 - --- Scheduler Service Started ---
+2025-05-25 23:33:18,153 - scheduler_app - INFO - scheduler:52 - Main data pipeline will run every 1 minute(s).
+2025-05-25 23:33:18,153 - scheduler_app - INFO - scheduler:53 - Weekly summary report will run every 3 minute(s) (for testing). Tweak for prod.
+2025-05-25 23:33:18,153 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
+2025-05-25 23:34:18,410 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:34:42,855 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:35:43,097 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:36:07,970 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:36:19,016 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-25 23:36:19,026 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-25 23:37:08,207 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:37:31,994 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:38:32,201 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:38:55,035 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:39:19,107 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-25 23:39:19,123 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-25 23:39:55,250 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:40:20,239 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:41:20,455 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:41:42,759 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:42:19,896 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-25 23:42:19,924 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-25 23:42:42,997 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:43:06,288 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:44:06,485 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:44:29,791 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:45:19,971 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-25 23:45:19,993 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-25 23:45:30,026 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:45:53,474 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:46:53,693 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:47:21,164 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:48:20,426 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-25 23:48:20,456 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-25 23:48:21,461 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:48:45,734 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:49:45,945 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:50:09,159 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:51:09,356 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:51:32,142 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:51:33,148 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-25 23:51:33,189 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-25 23:52:32,397 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:52:56,233 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:53:56,428 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:54:24,360 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:54:33,396 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-25 23:54:33,434 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-25 23:55:24,608 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:55:47,053 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:56:47,266 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:57:10,090 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:57:34,169 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-25 23:57:34,216 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-25 23:58:10,348 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:58:33,332 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-25 23:59:33,528 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-25 23:59:56,271 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:00:34,406 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:00:34,454 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:00:56,527 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:01:20,798 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:02:20,997 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:02:43,851 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:03:35,033 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:03:35,091 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:03:44,122 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:04:07,507 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:05:07,729 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:05:30,910 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:06:31,125 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:06:53,957 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:06:54,962 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:06:55,020 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:07:54,206 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:08:17,447 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:09:17,619 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:09:40,697 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:09:55,751 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:09:55,802 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:10:40,957 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:11:05,246 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:12:05,488 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:12:28,151 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:12:56,251 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:12:56,312 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:13:28,418 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:13:51,675 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:14:47,660 - scheduler_app - INFO - scheduler:73 - Scheduler stopped by user (KeyboardInterrupt).
+2025-05-26 00:14:47,663 - scheduler_app - INFO - scheduler:77 - --- Scheduler Service Shutting Down ---
+2025-05-26 00:34:27,440 - scheduler_app - INFO - scheduler:51 - --- Scheduler Service Started ---
+2025-05-26 00:34:27,442 - scheduler_app - INFO - scheduler:52 - Main data pipeline will run every 1 minute(s).
+2025-05-26 00:34:27,442 - scheduler_app - INFO - scheduler:53 - Weekly summary report will run every 3 minute(s) (for testing). Tweak for prod.
+2025-05-26 00:34:27,442 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
+2025-05-26 00:35:27,672 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:35:51,151 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:36:51,406 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:37:14,563 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:37:27,606 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:37:27,609 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:38:14,758 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:38:43,013 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:39:43,210 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:40:07,271 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:40:52,947 - scheduler_app - INFO - scheduler:51 - --- Scheduler Service Started ---
+2025-05-26 00:40:52,948 - scheduler_app - INFO - scheduler:52 - Main data pipeline will run every 1 minute(s).
+2025-05-26 00:40:52,948 - scheduler_app - INFO - scheduler:53 - Weekly summary report will run every 3 minute(s) (for testing). Tweak for prod.
+2025-05-26 00:40:52,948 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
+2025-05-26 00:41:19,082 - scheduler_app - INFO - scheduler:51 - --- Scheduler Service Started ---
+2025-05-26 00:41:19,082 - scheduler_app - INFO - scheduler:52 - Main data pipeline will run every 1 minute(s).
+2025-05-26 00:41:19,082 - scheduler_app - INFO - scheduler:53 - Weekly summary report will run every 3 minute(s) (for testing). Tweak for prod.
+2025-05-26 00:41:19,082 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
+2025-05-26 00:41:53,192 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:42:16,433 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:42:19,297 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:42:40,381 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:43:16,662 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:43:40,382 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:43:40,643 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:43:53,432 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:43:53,437 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:44:01,851 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:44:19,928 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:44:19,939 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:44:40,644 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:45:02,101 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:45:03,235 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:45:23,248 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:46:03,456 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:46:23,495 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:46:26,138 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:46:38,677 - scheduler_app - INFO - scheduler:73 - Scheduler stopped by user (KeyboardInterrupt).
+2025-05-26 00:46:38,677 - scheduler_app - INFO - scheduler:77 - --- Scheduler Service Shutting Down ---
+2025-05-26 00:46:54,262 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:46:54,274 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:47:26,405 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:47:48,510 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:48:48,729 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:49:11,744 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:49:54,942 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:49:54,954 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:50:12,020 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:50:34,328 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:51:34,552 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:51:57,195 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:52:55,413 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:52:55,423 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:52:57,433 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:53:20,893 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:54:21,138 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:54:43,394 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:55:43,638 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:56:07,068 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:56:08,073 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:56:08,078 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:57:07,343 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:57:30,709 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:58:30,917 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 00:58:53,846 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 00:59:08,899 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-26 00:59:08,908 - scheduler_app - INFO - scheduler:46 - Scheduler finished: Weekly Summary Report Job completed successfully.
+2025-05-26 00:59:54,070 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 01:00:11,664 - scheduler_app - INFO - scheduler:72 - Scheduler script started directly.
+2025-05-26 01:00:11,664 - scheduler_app - INFO - scheduler:73 - Initializing database for scheduler test run...
+2025-05-26 01:00:11,668 - scheduler_app - INFO - scheduler:78 - Loaded 8 test coins for scheduler test run from config.
+2025-05-26 01:00:11,668 - scheduler_app - INFO - scheduler:82 - Starting the scheduler...
+2025-05-26 01:00:11,668 - scheduler_app - INFO - scheduler:56 - Scheduler started. Setting up jobs...
+2025-05-26 01:00:11,668 - scheduler_app - INFO - scheduler:60 - Scheduled 'run_hourly_data_pipeline' to run every 60 minute(s).
+2025-05-26 01:00:11,668 - scheduler_app - INFO - scheduler:64 - Scheduled 'weekly_summary_task' to run every 1440 minute(s).
+2025-05-26 01:00:11,668 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
+2025-05-26 01:00:17,357 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 02:00:12,359 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-26 02:00:12,366 - scheduler_app - INFO - scheduler:33 - Found 8 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'DOT', 'ETH', 'LINK', 'SOL', 'UNI']
+2025-05-26 02:00:12,366 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-26 02:00:12,367 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-26 02:00:12,367 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-26 02:00:12,368 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-26 02:00:12,368 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-26 02:00:12,368 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-26 02:00:12,369 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOT as part of hourly pipeline...
+2025-05-26 02:00:12,369 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOT
+2025-05-26 02:00:12,369 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-26 02:00:12,369 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-26 02:00:12,369 - scheduler_app - INFO - scheduler:35 - Processing symbol: LINK as part of hourly pipeline...
+2025-05-26 02:00:12,370 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: LINK
+2025-05-26 02:00:12,370 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-26 02:00:12,370 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-26 02:00:12,370 - scheduler_app - INFO - scheduler:35 - Processing symbol: UNI as part of hourly pipeline...
+2025-05-26 02:00:12,370 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: UNI
+2025-05-26 02:00:12,371 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-26 03:00:12,806 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-26 03:00:12,811 - scheduler_app - INFO - scheduler:33 - Found 8 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'DOT', 'ETH', 'LINK', 'SOL', 'UNI']
+2025-05-26 03:00:12,812 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-26 03:00:12,813 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-26 03:00:12,813 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-26 03:00:12,813 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-26 03:00:12,814 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-26 03:00:12,814 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-26 03:00:12,814 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOT as part of hourly pipeline...
+2025-05-26 03:00:12,814 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOT
+2025-05-26 03:00:12,815 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-26 03:00:12,815 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-26 03:00:12,815 - scheduler_app - INFO - scheduler:35 - Processing symbol: LINK as part of hourly pipeline...
+2025-05-26 03:00:12,815 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: LINK
+2025-05-26 03:00:12,815 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-26 03:00:12,816 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-26 03:00:12,816 - scheduler_app - INFO - scheduler:35 - Processing symbol: UNI as part of hourly pipeline...
+2025-05-26 03:00:12,816 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: UNI
+2025-05-26 03:00:12,816 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-26 04:00:13,087 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-26 04:00:13,093 - scheduler_app - INFO - scheduler:33 - Found 8 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'DOT', 'ETH', 'LINK', 'SOL', 'UNI']
+2025-05-26 04:00:13,093 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-26 04:00:13,095 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-26 04:00:13,095 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-26 04:00:13,095 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-26 04:00:13,096 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-26 04:00:13,096 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-26 04:00:13,096 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOT as part of hourly pipeline...
+2025-05-26 04:00:13,096 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOT
+2025-05-26 04:00:13,096 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-26 04:00:13,097 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-26 04:00:13,097 - scheduler_app - INFO - scheduler:35 - Processing symbol: LINK as part of hourly pipeline...
+2025-05-26 04:00:13,097 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: LINK
+2025-05-26 04:00:13,097 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-26 04:00:13,097 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-26 04:00:13,097 - scheduler_app - INFO - scheduler:35 - Processing symbol: UNI as part of hourly pipeline...
+2025-05-26 04:00:13,098 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: UNI
+2025-05-26 04:00:13,098 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-26 05:00:13,471 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-26 05:00:13,477 - scheduler_app - INFO - scheduler:33 - Found 8 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'DOT', 'ETH', 'LINK', 'SOL', 'UNI']
+2025-05-26 05:00:13,477 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-26 05:00:13,479 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-26 05:00:13,479 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-26 05:00:13,479 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-26 05:00:13,479 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-26 05:00:13,480 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-26 05:00:13,480 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOT as part of hourly pipeline...
+2025-05-26 05:00:13,480 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOT
+2025-05-26 05:00:13,480 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-26 05:00:13,480 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-26 05:00:13,480 - scheduler_app - INFO - scheduler:35 - Processing symbol: LINK as part of hourly pipeline...
+2025-05-26 05:00:13,481 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: LINK
+2025-05-26 05:00:13,481 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-26 05:00:13,481 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-26 05:00:13,481 - scheduler_app - INFO - scheduler:35 - Processing symbol: UNI as part of hourly pipeline...
+2025-05-26 05:00:13,481 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: UNI
+2025-05-26 05:00:13,482 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-26 06:00:13,915 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-26 06:00:13,924 - scheduler_app - INFO - scheduler:33 - Found 8 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'DOT', 'ETH', 'LINK', 'SOL', 'UNI']
+2025-05-26 06:00:13,924 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-26 06:00:13,925 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-26 06:00:13,925 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-26 06:00:13,926 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-26 06:00:13,926 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-26 06:00:13,926 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-26 06:00:13,926 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOT as part of hourly pipeline...
+2025-05-26 06:00:13,927 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOT
+2025-05-26 06:00:13,927 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-26 06:00:13,927 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-26 06:00:13,927 - scheduler_app - INFO - scheduler:35 - Processing symbol: LINK as part of hourly pipeline...
+2025-05-26 06:00:13,927 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: LINK
+2025-05-26 06:00:13,927 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-26 06:00:13,927 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-26 06:00:13,928 - scheduler_app - INFO - scheduler:35 - Processing symbol: UNI as part of hourly pipeline...
+2025-05-26 06:00:13,928 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: UNI
+2025-05-26 06:00:13,928 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-26 07:00:14,148 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-26 07:00:14,153 - scheduler_app - INFO - scheduler:33 - Found 8 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'DOT', 'ETH', 'LINK', 'SOL', 'UNI']
+2025-05-26 07:00:14,154 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-26 07:00:14,155 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-26 07:00:14,155 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-26 07:00:14,155 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-26 07:00:14,156 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-26 07:00:14,156 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-26 07:00:14,156 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOT as part of hourly pipeline...
+2025-05-26 07:00:14,157 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOT
+2025-05-26 07:00:14,157 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-26 07:00:14,157 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-26 07:00:14,157 - scheduler_app - INFO - scheduler:35 - Processing symbol: LINK as part of hourly pipeline...
+2025-05-26 07:00:14,158 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: LINK
+2025-05-26 07:00:14,158 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-26 07:00:14,158 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-26 07:00:14,158 - scheduler_app - INFO - scheduler:35 - Processing symbol: UNI as part of hourly pipeline...
+2025-05-26 07:00:14,159 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: UNI
+2025-05-26 07:00:14,159 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-26 08:00:14,505 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-26 08:00:14,511 - scheduler_app - INFO - scheduler:33 - Found 8 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'DOT', 'ETH', 'LINK', 'SOL', 'UNI']
+2025-05-26 08:00:14,511 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-26 08:00:14,512 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-26 08:00:14,512 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-26 08:00:14,513 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-26 08:00:14,513 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-26 08:00:14,514 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-26 08:00:14,514 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOT as part of hourly pipeline...
+2025-05-26 08:00:14,514 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOT
+2025-05-26 08:00:14,514 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-26 08:00:14,515 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-26 08:00:14,515 - scheduler_app - INFO - scheduler:35 - Processing symbol: LINK as part of hourly pipeline...
+2025-05-26 08:00:14,515 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: LINK
+2025-05-26 08:00:14,515 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-26 08:00:14,516 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-26 08:00:14,516 - scheduler_app - INFO - scheduler:35 - Processing symbol: UNI as part of hourly pipeline...
+2025-05-26 08:00:14,516 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: UNI
+2025-05-26 08:00:14,516 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-26 09:00:15,040 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-26 09:00:15,055 - scheduler_app - INFO - scheduler:33 - Found 8 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'DOT', 'ETH', 'LINK', 'SOL', 'UNI']
+2025-05-26 09:00:15,056 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-26 09:00:15,061 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-26 09:00:15,061 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-26 09:00:15,063 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-26 09:00:15,063 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-26 09:00:15,063 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-26 09:00:15,063 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOT as part of hourly pipeline...
+2025-05-26 09:00:15,063 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOT
+2025-05-26 09:00:15,063 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-26 09:00:15,064 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-26 09:00:15,064 - scheduler_app - INFO - scheduler:35 - Processing symbol: LINK as part of hourly pipeline...
+2025-05-26 09:00:15,064 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: LINK
+2025-05-26 09:00:15,064 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-26 09:00:15,064 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-26 09:00:15,064 - scheduler_app - INFO - scheduler:35 - Processing symbol: UNI as part of hourly pipeline...
+2025-05-26 09:00:15,064 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: UNI
+2025-05-26 09:00:15,064 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-26 10:00:15,099 - scheduler_app - INFO - scheduler:26 - --- Hourly Data Pipeline Started ---
+2025-05-26 10:00:15,116 - scheduler_app - INFO - scheduler:33 - Found 8 coin(s) to process: ['ADA', 'BTC', 'DOGE', 'DOT', 'ETH', 'LINK', 'SOL', 'UNI']
+2025-05-26 10:00:15,116 - scheduler_app - INFO - scheduler:35 - Processing symbol: ADA as part of hourly pipeline...
+2025-05-26 10:00:15,117 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ADA
+2025-05-26 10:00:15,117 - scheduler_app - INFO - scheduler:35 - Processing symbol: BTC as part of hourly pipeline...
+2025-05-26 10:00:15,117 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: BTC
+2025-05-26 10:00:15,117 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOGE as part of hourly pipeline...
+2025-05-26 10:00:15,117 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOGE
+2025-05-26 10:00:15,117 - scheduler_app - INFO - scheduler:35 - Processing symbol: DOT as part of hourly pipeline...
+2025-05-26 10:00:15,117 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: DOT
+2025-05-26 10:00:15,117 - scheduler_app - INFO - scheduler:35 - Processing symbol: ETH as part of hourly pipeline...
+2025-05-26 10:00:15,117 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: ETH
+2025-05-26 10:00:15,117 - scheduler_app - INFO - scheduler:35 - Processing symbol: LINK as part of hourly pipeline...
+2025-05-26 10:00:15,118 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: LINK
+2025-05-26 10:00:15,118 - scheduler_app - INFO - scheduler:35 - Processing symbol: SOL as part of hourly pipeline...
+2025-05-26 10:00:15,118 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: SOL
+2025-05-26 10:00:15,118 - scheduler_app - INFO - scheduler:35 - Processing symbol: UNI as part of hourly pipeline...
+2025-05-26 10:00:15,118 - scheduler_app - INFO - scheduler:38 - Successfully processed symbol: UNI
+2025-05-26 10:00:15,118 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
+2025-05-26 10:49:57,601 - scheduler_app - INFO - scheduler:86 - Scheduler stopped by user (KeyboardInterrupt).
+2025-05-26 10:49:57,603 - scheduler_app - INFO - scheduler:90 - Scheduler script finished.
