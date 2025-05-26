@@ -3,6 +3,7 @@ import sys # For sys.exit in main block
 import os # For path joining for logger if needed
 import datetime # For timestamping metrics
 import sqlite3
+import time # Added for sleep between batches
 
 # Import config first
 from src.utils import config # Imports TRACKED_COIN_IDS, COIN_MAPPING
@@ -308,7 +309,7 @@ def process_and_save_coin_data(coingecko_id: str):
 def run_full_data_pipeline():
     """
     Runs the full data collection, processing, and saving pipeline for all tracked coins.
-    This function can be called by the scheduler.
+    Processes coins in two batches with a delay in between.
     """
     logger.info("--- Full Data Pipeline Started ---")
 
@@ -339,9 +340,35 @@ def run_full_data_pipeline():
         return # Exit this pipeline run
     logger.info("Database initialized and coins (re)loaded/updated from COIN_MAPPING.")
 
-    for coingecko_id_to_process in config.COIN_MAPPING.keys():
-        logger.info(f"Processing CoinGecko ID: {coingecko_id_to_process} from pipeline...")
+    all_coin_ids = list(config.COIN_MAPPING.keys())
+    num_coins = len(all_coin_ids)
+    
+    if num_coins == 0:
+        logger.info("No coins in COIN_MAPPING. Pipeline finished.")
+        logger.info("--- Full Data Pipeline Finished ---")
+        return
+
+    # Determine batch sizes
+    batch_size_1 = (num_coins + 1) // 2 # Handles odd numbers by putting more in the first batch
+    
+    batch_1_ids = all_coin_ids[:batch_size_1]
+    batch_2_ids = all_coin_ids[batch_size_1:]
+
+    logger.info(f"Starting Batch 1/2 processing {len(batch_1_ids)} coins.")
+    for coingecko_id_to_process in batch_1_ids:
+        logger.info(f"Processing CoinGecko ID: {coingecko_id_to_process} from pipeline (Batch 1)...")
         process_and_save_coin_data(coingecko_id_to_process)
+    
+    if batch_2_ids: # Only pause and proceed if there's a second batch
+        logger.info(f"Batch 1/2 finished. Waiting for 10 minutes before starting Batch 2/2 ({len(batch_2_ids)} coins)...")
+        time.sleep(60 * 10) # 10 minutes delay
+        
+        logger.info(f"Starting Batch 2/2 processing {len(batch_2_ids)} coins.")
+        for coingecko_id_to_process in batch_2_ids:
+            logger.info(f"Processing CoinGecko ID: {coingecko_id_to_process} from pipeline (Batch 2)...")
+            process_and_save_coin_data(coingecko_id_to_process)
+    else:
+        logger.info("Only one batch was needed as there are not enough coins for two batches.")
     
     logger.info("--- Full Data Pipeline Finished ---")
 

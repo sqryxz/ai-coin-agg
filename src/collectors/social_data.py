@@ -6,6 +6,7 @@ import zipfile
 import io
 import pandas as pd
 import time
+import random # Added for jitter in backoff
 
 # Adjust path to import config for API key
 PROJECT_ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -278,6 +279,7 @@ def calculate_aggregate_sentiment_from_posts(filtered_posts_data: dict) -> dict:
 def fetch_gdelt_doc_api_news_sentiment(query: str, timespan: str = "24h", max_records: int = 25) -> dict:
     """
     Fetches news articles and their sentiment (tone) for a given query using GDELT DOC 2.0 API.
+    Implements exponential backoff with jitter for rate limiting.
 
     Args:
         query (str): The search query (e.g., "Bitcoin" OR "BTC").
@@ -303,55 +305,75 @@ def fetch_gdelt_doc_api_news_sentiment(query: str, timespan: str = "24h", max_re
     }
     
     print(f"Querying GDELT DOC API: query='{query}', timespan='{api_timespan}', maxrecords={max_records}")
-    try:
-        response = requests.get(GDELT_DOC_API_URL, params=params, timeout=15) # Increased timeout
-        response.raise_for_status()
-        time.sleep(2) # Changed delay to 2 seconds
-        data = response.json()
-        
-        articles_data = data.get("articles", [])
-        processed_articles = []
-        tone_scores = []
-
-        for article in articles_data:
-            if not isinstance(article, dict):
-                continue
+    
+    max_retries = 5
+    base_delay = 1  # seconds
+    
+    for attempt in range(max_retries):
+        try:
+            response = requests.get(GDELT_DOC_API_URL, params=params, timeout=15) # Increased timeout
+            response.raise_for_status()
+            # Removed time.sleep(2) here as backoff handles delays
+            data = response.json()
             
-            raw_tone_str = article.get("tone", "")
-            article_tone = None
-            if raw_tone_str:
-                try:
-                    # Tone format: "avg_tone,pos_score,neg_score,polarity,activity_ref_density,self_group_ref_density"
-                    article_tone = float(raw_tone_str.split(',')[0])
-                    tone_scores.append(article_tone)
-                except (ValueError, IndexError):
-                    print(f"Could not parse tone from: {raw_tone_str} for article: {article.get('url')}")
-            
-            processed_articles.append({
-                "title": article.get("title"),
-                "url": article.get("url"),
-                "source": article.get("source"),
-                "domain": article.get("domain"),
-                "seendate": article.get("seendate"),
-                "tone_raw": raw_tone_str,
-                "tone_extracted": article_tone
-            })
-        
-        average_tone = sum(tone_scores) / len(tone_scores) if tone_scores else 0.0
-        
-        return {
-            "query": query,
-            "gdelt_average_tone": round(average_tone, 4),
-            "gdelt_article_count": len(processed_articles), # Number of articles actually processed
-            "articles": processed_articles # List of processed articles with details
-        }
+            articles_data = data.get("articles", [])
+            processed_articles = []
+            tone_scores = []
 
-    except requests.exceptions.RequestException as e:
-        return {"query": query, "error": f"GDELT DOC API RequestException: {e}"}
-    except json.JSONDecodeError:
-        return {"query": query, "error": f"GDELT DOC API JSONDecodeError. Raw: {response.text if 'response' in locals() and response else 'No response'}"}
-    except Exception as e:
-        return {"query": query, "error": f"An unexpected error occurred with GDELT DOC API: {e}"}
+            for article in articles_data:
+                if not isinstance(article, dict):
+                    continue
+                
+                raw_tone_str = article.get("tone", "")
+                article_tone = None
+                if raw_tone_str:
+                    try:
+                        # Tone format: "avg_tone,pos_score,neg_score,polarity,activity_ref_density,self_group_ref_density"
+                        article_tone = float(raw_tone_str.split(',')[0])
+                        tone_scores.append(article_tone)
+                    except (ValueError, IndexError):
+                        print(f"Could not parse tone from: {raw_tone_str} for article: {article.get('url')}")
+                
+                processed_articles.append({
+                    "title": article.get("title"),
+                    "url": article.get("url"),
+                    "source": article.get("source"),
+                    "domain": article.get("domain"),
+                    "seendate": article.get("seendate"),
+                    "tone_raw": raw_tone_str,
+                    "tone_extracted": article_tone
+                })
+            
+            average_tone = sum(tone_scores) / len(tone_scores) if tone_scores else 0.0
+            
+            return {
+                "query": query,
+                "gdelt_average_tone": round(average_tone, 4),
+                "gdelt_article_count": len(processed_articles), # Number of articles actually processed
+                "articles": processed_articles # List of processed articles with details
+            }
+
+        except requests.exceptions.RequestException as e:
+            if e.response is not None and e.response.status_code == 429:
+                if attempt < max_retries - 1:
+                    delay = (base_delay * (2 ** attempt)) + random.uniform(0, 1) # Exponential backoff with jitter
+                    print(f"Rate limited by GDELT. Retrying in {delay:.2f} seconds... (Attempt {attempt + 1}/{max_retries})")
+                    time.sleep(delay)
+                    continue
+                else:
+                    print(f"Max retries reached for GDELT API after rate limiting.")
+                    return {"query": query, "error": f"GDELT DOC API RequestException: {e} (Max retries reached)"}
+            else:
+                # For other request exceptions, return error immediately
+                return {"query": query, "error": f"GDELT DOC API RequestException: {e}"}
+        except json.JSONDecodeError:
+            return {"query": query, "error": f"GDELT DOC API JSONDecodeError. Raw: {response.text if 'response' in locals() and response else 'No response'}"}
+        except Exception as e:
+            # Catch any other unexpected errors during the API call or processing
+            return {"query": query, "error": f"An unexpected error occurred with GDELT DOC API on attempt {attempt + 1}: {e}"}
+
+    # This part should ideally not be reached if loop completes due to max_retries without returning
+    return {"query": query, "error": "GDELT DOC API request failed after multiple retries due to persistent issues (e.g., rate limiting)."}
 
 if __name__ == "__main__":
     print("--- Testing fetch_social_sentiment ---")

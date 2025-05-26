@@ -1024,3 +1024,7 @@ TypeError: unsupported operand type(s) for -: 'str' and 'datetime.timedelta'
 2025-05-26 23:54:26,848 - scheduler_app - INFO - scheduler:52 - Main data pipeline will run every 60 minute(s).
 2025-05-26 23:54:26,848 - scheduler_app - INFO - scheduler:53 - Daily summary report will run daily at 01:00 UTC (9 AM GMT+8).
 2025-05-26 23:54:26,849 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
+2025-05-27 00:54:27,242 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-27 00:55:14,728 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-27 01:44:31,340 - scheduler_app - INFO - scheduler:73 - Scheduler stopped by user (KeyboardInterrupt).
+2025-05-27 01:44:31,347 - scheduler_app - INFO - scheduler:77 - --- Scheduler Service Shutting Down ---
