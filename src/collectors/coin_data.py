@@ -1,5 +1,6 @@
 import json
 import requests
+import time
 
 # --- CoinGecko API Integration ---
 COINGECKO_API_URL = "https://api.coingecko.com/api/v3"
@@ -14,6 +15,7 @@ def ping_coingecko() -> bool:
     try:
         response = requests.get(f"{COINGECKO_API_URL}/ping")
         response.raise_for_status()  # Raises an HTTPError for bad responses (4XX or 5XX)
+        time.sleep(2)
         return response.status_code == 200
     except requests.exceptions.RequestException as e:
         print(f"Error pinging CoinGecko API: {e}")
@@ -43,6 +45,7 @@ def fetch_coingecko_market_data(coin_id: str, vs_currency: str = "usd") -> dict:
     try:
         response = requests.get(f"{COINGECKO_API_URL}/coins/markets", params=params)
         response.raise_for_status()
+        time.sleep(2)
         data = response.json()
         if data:
             coin_data = data[0]
@@ -86,6 +89,7 @@ def fetch_coingecko_historical_data(coin_id: str, vs_currency: str = "usd", days
     try:
         response = requests.get(f"{COINGECKO_API_URL}/coins/{coin_id}/market_chart", params=params)
         response.raise_for_status()
+        time.sleep(2)
         data = response.json()
         # Ensure all expected keys are present, even if empty, for consistent structure
         return {

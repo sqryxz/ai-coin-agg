@@ -5,6 +5,7 @@ import sys
 import zipfile
 import io
 import pandas as pd
+import time
 
 # Adjust path to import config for API key
 PROJECT_ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -77,6 +78,7 @@ def ping_cryptopanic() -> bool:
     try:
         response = requests.get(f"{CRYPTO_PANIC_API_URL}/posts/", params=params)
         response.raise_for_status()  # Raises an HTTPError for bad responses (4XX or 5XX)
+        time.sleep(2) # Changed delay to 2 seconds
         data = response.json()
         # A successful response should have a "count" or "results"
         if "count" in data or "results" in data:
@@ -123,6 +125,7 @@ def fetch_cryptopanic_news_for_coin(coin_symbol: str) -> dict:
     try:
         response = requests.get(f"{CRYPTO_PANIC_API_URL}/posts/", params=params)
         response.raise_for_status()
+        time.sleep(2) # Changed delay to 2 seconds
         data = response.json()
         
         # Check if 'results' key exists and is a list, which is expected for successful data fetch
@@ -301,8 +304,9 @@ def fetch_gdelt_doc_api_news_sentiment(query: str, timespan: str = "24h", max_re
     
     print(f"Querying GDELT DOC API: query='{query}', timespan='{api_timespan}', maxrecords={max_records}")
     try:
-        response = requests.get(GDELT_DOC_API_URL, params=params, timeout=60) # Increased timeout for GDELT API
+        response = requests.get(GDELT_DOC_API_URL, params=params, timeout=15) # Increased timeout
         response.raise_for_status()
+        time.sleep(2) # Changed delay to 2 seconds
         data = response.json()
         
         articles_data = data.get("articles", [])

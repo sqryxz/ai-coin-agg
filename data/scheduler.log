@@ -998,3 +998,29 @@ TypeError: unsupported operand type(s) for -: 'str' and 'datetime.timedelta'
 2025-05-26 10:00:15,118 - scheduler_app - INFO - scheduler:41 - --- Hourly Data Pipeline Finished ---
 2025-05-26 10:49:57,601 - scheduler_app - INFO - scheduler:86 - Scheduler stopped by user (KeyboardInterrupt).
 2025-05-26 10:49:57,603 - scheduler_app - INFO - scheduler:90 - Scheduler script finished.
+2025-05-26 22:32:42,600 - scheduler_app - INFO - scheduler:51 - --- Scheduler Service Started ---
+2025-05-26 22:32:42,600 - scheduler_app - INFO - scheduler:52 - Main data pipeline will run every 60 minute(s).
+2025-05-26 22:32:42,600 - scheduler_app - INFO - scheduler:53 - Daily summary report will run daily at 01:00 UTC (9 AM GMT+8).
+2025-05-26 22:32:42,600 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
+2025-05-26 22:35:18,255 - scheduler_app - INFO - scheduler:51 - --- Scheduler Service Started ---
+2025-05-26 22:35:18,255 - scheduler_app - INFO - scheduler:52 - Main data pipeline will run every 60 minute(s).
+2025-05-26 22:35:18,255 - scheduler_app - INFO - scheduler:53 - Daily summary report will run daily at 01:00 UTC (9 AM GMT+8).
+2025-05-26 22:35:18,255 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
+2025-05-26 22:36:01,759 - scheduler_app - INFO - scheduler:51 - --- Scheduler Service Started ---
+2025-05-26 22:36:01,760 - scheduler_app - INFO - scheduler:52 - Main data pipeline will run every 60 minute(s).
+2025-05-26 22:36:01,760 - scheduler_app - INFO - scheduler:53 - Daily summary report will run daily at 01:00 UTC (9 AM GMT+8).
+2025-05-26 22:36:01,760 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
+2025-05-26 23:36:01,776 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-26 23:36:28,682 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-26 23:53:52,781 - scheduler_app - INFO - scheduler:73 - Scheduler stopped by user (KeyboardInterrupt).
+2025-05-26 23:53:52,782 - scheduler_app - INFO - scheduler:77 - --- Scheduler Service Shutting Down ---
+2025-05-26 23:54:00,952 - scheduler_app - INFO - scheduler:51 - --- Scheduler Service Started ---
+2025-05-26 23:54:00,952 - scheduler_app - INFO - scheduler:52 - Main data pipeline will run every 60 minute(s).
+2025-05-26 23:54:00,952 - scheduler_app - INFO - scheduler:53 - Daily summary report will run daily at 01:00 UTC (9 AM GMT+8).
+2025-05-26 23:54:00,952 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
+2025-05-26 23:54:05,455 - scheduler_app - INFO - scheduler:73 - Scheduler stopped by user (KeyboardInterrupt).
+2025-05-26 23:54:05,456 - scheduler_app - INFO - scheduler:77 - --- Scheduler Service Shutting Down ---
+2025-05-26 23:54:26,848 - scheduler_app - INFO - scheduler:51 - --- Scheduler Service Started ---
+2025-05-26 23:54:26,848 - scheduler_app - INFO - scheduler:52 - Main data pipeline will run every 60 minute(s).
+2025-05-26 23:54:26,848 - scheduler_app - INFO - scheduler:53 - Daily summary report will run daily at 01:00 UTC (9 AM GMT+8).
+2025-05-26 23:54:26,849 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
