@@ -1028,3 +1028,35 @@ TypeError: unsupported operand type(s) for -: 'str' and 'datetime.timedelta'
 2025-05-27 00:55:14,728 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
 2025-05-27 01:44:31,340 - scheduler_app - INFO - scheduler:73 - Scheduler stopped by user (KeyboardInterrupt).
 2025-05-27 01:44:31,347 - scheduler_app - INFO - scheduler:77 - --- Scheduler Service Shutting Down ---
+2025-05-27 01:44:45,645 - scheduler_app - INFO - scheduler:51 - --- Scheduler Service Started ---
+2025-05-27 01:44:45,645 - scheduler_app - INFO - scheduler:52 - Main data pipeline will run every 60 minute(s).
+2025-05-27 01:44:45,645 - scheduler_app - INFO - scheduler:53 - Daily summary report will run daily at 01:00 UTC (9 AM GMT+8).
+2025-05-27 01:44:45,646 - scheduler_app - INFO - scheduler:66 - Scheduler is now running. Press Ctrl+C to exit.
+2025-05-27 02:44:46,310 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-27 02:57:39,968 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-27 03:57:40,912 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-27 04:10:32,995 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-27 05:10:33,266 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-27 05:23:30,083 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-27 06:23:31,003 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-27 06:36:27,932 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-27 07:36:28,196 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-27 07:49:21,991 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-27 08:49:22,626 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-27 09:02:20,744 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-27 09:02:21,752 - scheduler_app - INFO - scheduler:37 - Scheduler starting: Weekly Summary Report Job
+2025-05-27 09:02:21,775 - scheduler_app - ERROR - scheduler:48 - Scheduler error: Weekly Summary Report Job failed: type object 'datetime.datetime' has no attribute 'datetime'
+Traceback (most recent call last):
+  File "/Users/jeremy/ai-altcoin-aggregator/src/scheduler.py", line 45, in weekly_summary_job
+    generate_and_save_top_coins_report(week_end_date=today, top_n=config.TOP_N_COINS_REPORT)
+  File "/Users/jeremy/ai-altcoin-aggregator/src/processors/aggregator.py", line 229, in generate_and_save_top_coins_report
+    send_to_discord(config.DISCORD_WEBHOOK_URL, report_title, top_coins_list)
+  File "/Users/jeremy/ai-altcoin-aggregator/src/processors/aggregator.py", line 141, in send_to_discord
+    "text": f"Report generated on {datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}"
+                                   ^^^^^^^^^^^^^^^^^
+AttributeError: type object 'datetime.datetime' has no attribute 'datetime'
+2025-05-27 10:02:21,114 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-27 10:15:15,952 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-27 11:15:15,994 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job
+2025-05-27 11:28:10,409 - scheduler_app - INFO - scheduler:31 - Scheduler finished: Main Data Pipeline Job completed successfully.
+2025-05-27 12:28:10,721 - scheduler_app - INFO - scheduler:28 - Scheduler starting: Main Data Pipeline Job

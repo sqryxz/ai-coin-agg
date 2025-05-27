@@ -81,7 +81,7 @@ This plan breaks the MVP development into small, testable tasks. Each task focus
 ## **5. Scheduling**
 
 ### **Task 5.1:** Implement `scheduler.py`
-- **Start:** Write a function to schedule hourly and weekly tasks using the `schedule` library.
+- **Start:** Write a function to schedule hourly and daily tasks using the `schedule` library.
 - **End:** Verify the scheduler triggers a test function at the correct intervals.
 
 ### **Task 5.2:** Integrate Scheduling with Data Collection
@@ -90,14 +90,14 @@ This plan breaks the MVP development into small, testable tasks. Each task focus
 
 ---
 
-## **6. Weekly Summary**
+## **6. Daily Summary**
 
 ### **Task 6.1:** Implement `aggregator.py`
-- **Start:** Write a function to aggregate hourly data into weekly summaries.
-- **End:** Verify the function outputs a valid weekly summary for a single coin.
+- **Start:** Write a function to aggregate hourly data into daily summaries.
+- **End:** Verify the function outputs a valid daily summary for a single coin.
 
-### **Task 6.2:** Generate Weekly Report
-- **Start:** Write a function to generate a report of top coins based on weekly scores.
+### **Task 6.2:** Generate Daily Report
+- **Start:** Write a function to generate a report of top coins based on daily scores.
 - **End:** Verify the report is generated and saved to the database.
 
 ---
@@ -126,7 +126,7 @@ This plan breaks the MVP development into small, testable tasks. Each task focus
 
 ### **Task 8.2:** Deploy MVP
 - **Start:** Deploy the program on a local machine or server with the scheduler running.
-- **End:** Verify the program collects, processes, and saves data hourly and generates weekly summaries.
+- **End:** Verify the program collects, processes, and saves data hourly and generates daily summaries.
 
 ---
 

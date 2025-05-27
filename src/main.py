@@ -284,6 +284,7 @@ def process_and_save_coin_data(coingecko_id: str):
     final_symbol_from_scorer = score_data.get("symbol") 
     final_score = score_data.get("score") # This is the 0-100 scaled score
     score_timestamp = score_data.get("score_calculation_timestamp_utc")
+    contributing_metrics = score_data.get("contributing_metrics") # Get subscores
     # coingecko_id_from_scorer = score_data.get("coingecko_id") # Also available, good for verification
 
     if final_symbol_from_scorer and final_score is not None and score_timestamp is not None:
@@ -294,8 +295,11 @@ def process_and_save_coin_data(coingecko_id: str):
             score_db_coin_id = get_coin_id_by_symbol(final_symbol_from_scorer) # Use symbol from scorer
             if score_db_coin_id:
                 logger.info(f"Saving score for {final_symbol_from_scorer} (ID: {score_db_coin_id}, Score: {final_score}) to database...")
-                insert_score_query = "INSERT INTO scores (coin_id, timestamp, score) VALUES (?, ?, ?);"
-                params = (score_db_coin_id, score_timestamp, final_score)
+                # Convert contributing_metrics to JSON string for DB storage
+                sub_scores_json = json.dumps(contributing_metrics) if contributing_metrics else None
+                
+                insert_score_query = "INSERT INTO scores (coin_id, timestamp, score, sub_scores_json) VALUES (?, ?, ?, ?);"
+                params = (score_db_coin_id, score_timestamp, final_score, sub_scores_json)
                 if execute_write_query(insert_score_query, params):
                     logger.info(f"Score for {final_symbol_from_scorer} saved successfully.")
                 else:

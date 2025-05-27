@@ -23,12 +23,12 @@ CREATE TABLE IF NOT EXISTS scores (
     coin_id INTEGER NOT NULL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     score REAL,
+    sub_scores_json TEXT,
     FOREIGN KEY (coin_id) REFERENCES coins (id)
 );
 
 CREATE TABLE IF NOT EXISTS summaries (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    week_start DATE NOT NULL,
-    week_end DATE NOT NULL,
+    report_date DATE NOT NULL,
     top_coins TEXT NOT NULL
 ); 

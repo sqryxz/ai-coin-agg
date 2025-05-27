@@ -42,8 +42,8 @@ COLLECTOR_LOG_FILE = "collector.log" # For data collectors (if we add detailed c
 # --- Scheduler Configuration ---
 # Times are in seconds for testing; use larger values for production
 # schedule.every().hour, .day.at("10:30") etc. are more readable for prod.
-HOURLY_PIPELINE_INTERVAL_MINUTES = 60  # Changed from 1 for hourly runs
-WEEKLY_SUMMARY_INTERVAL_MINUTES = 1440 # Changed from 3 for daily runs (24 * 60)
+HOURLY_PIPELINE_INTERVAL_MINUTES = 60
+DAILY_SUMMARY_INTERVAL_MINUTES = 1440 # Changed from 3 for daily runs (24 * 60)
 
 # --- API Configuration (Example) ---
 # Placeholder for API keys or endpoints if the project were to use real APIs
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     print(f"Scheduler Log File would be at: {os.path.join(LOG_DATA_DIR, SCHEDULER_LOG_FILE)}")
     print(f"Processor Log File would be at: {os.path.join(LOG_DATA_DIR, PROCESSOR_LOG_FILE)}")
     print(f"Hourly pipeline interval (minutes): {HOURLY_PIPELINE_INTERVAL_MINUTES}")
-    print(f"Weekly summary interval (minutes): {WEEKLY_SUMMARY_INTERVAL_MINUTES}")
+    print(f"Daily summary interval (minutes): {DAILY_SUMMARY_INTERVAL_MINUTES}")
     print(f"Discord Webhook URL Loaded: {bool(DISCORD_WEBHOOK_URL)}") # Added for verification
     print(f"Sample coins for testing: {SAMPLE_COINS_FOR_TESTING}")
     print(f"Tracked CoinGecko IDs: {TRACKED_COIN_IDS}")
